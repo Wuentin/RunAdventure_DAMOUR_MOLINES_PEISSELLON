@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.22.0/dist/phaser.js"></script>
+    <script src="niveau1.js"></script>
+    <script src="menuPrincipal.js"></script>
+    <script src="pause1.js"></script>
+    <script src="welcome.js"></script>
+    <script src="pause2.js"></script>
+    <script src="pause3.js"></script>
+    <script src="niveau3.js"></script>
+    <script src="niveau2.js"></script>
+    <style type="text/css">
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //CONFIGURATION GENERALE
+      window.onload = function() {
+        var config = {
+          type: Phaser.AUTO,
+          width: 1600,
+          height: 1270,
+
+          physics: {
+            //moteur physique
+            default: "arcade",
+            arcade: {
+              gravity: { y: 0 },
+              debug: false
+            }
+          },
+          scene: [
+            welcome,
+            menuPrincipal,
+            niveau1,
+            pause1,
+            niveau2,
+            pause2,
+            niveau3,
+            pause3
+          ]
+        };
+        var game = new Phaser.Game(config);
+        game.scene.start("welcome");
+      };
+
+      //VARIABLES
+      var MusicNiveau1; //musique du niveau1
+      var son_Niveau2; //musique du niveau2
+      var son_Niveau3; //musique du niveau3
+      var player;
+      var check1 = false; //check1=true si on réussi niveau 1
+      var check2 = false;
+      var check3 = false;
+      var boutonFeu; //bouton pour tirer
+      var entrer; //bouton entrer
+      var mute; //bouton pour mute la musique
+      var playmusic; //bouton pour play la musique
+      var boutonpause; //bouton pour mettre pause
+      var soncoupé = false; //indique si le son est coupé (true) ou non (false)
+      var direction = "right"; //indique la direction du player
+      var groupeBullets; //groupe de balles
+      var groupeCaisses; //groupe de caisses destructibles
+      var groupeEnemy; //Groupe d'ennemies
+      //VARIABLE NIVEAU 2
+      var gameOver = false; //indique si on a perdu (true)
+      var start = 0; //indique si le playeur a demarer le niveau (0 si non)
+      var dead = 0; //indique si le playeur est mort (0 si non)
+      var mort = 0;
+      var compteur_de_mort = 0; //compte le nb de fois ou le joeur est mort
+      var door1;
+      var compteur;
+      var compteur1;
+      var dansLaZone = 0;
+      //Pause2
+      var backMenuSelect = true; //indique si le bouton back to menu est selectionné (true si oui)
+      var playSelect = false; //indique si le bouton play est selectionné (true si oui)
+      var backMenuSelect2 = true; //indique si le bouton back to menu est selectionné (true si oui)
+      var playSelect2 = false; //indique si le bouton play est selectionné (true si oui)
+      //VARIABLES NIVEAU1
+      var groupeEnemy2;
+      var groupeEnemy1;
+      var groupeEnemy4;
+      var groupeEnemy3;
+
+      //VARIABLES NIVEAU3
+      var keyObj; //Bouton pour récupèrer les touches du clavier
+      var text1x; //Variable pour pouvoir position du texte
+      var text1y; //Variable pour pouvoir position du texte
+
+      //Différents affichage du nombre de morts, aux différents checkpoints
+      var compteur; //Affchage du compteur de mort 0
+      var compteur1; //Affchage du compteur de mort 1
+      var compteur2; //Affchage du compteur de mort 2
+      var compteur3; //Affchage du compteur de mort 3
+      var compteur4; //Affchage du compteur de mort 4
+
+      var dansLaZone = 0; //Variable qui servira à identifier la zone du joueur
+      var gravite = 2000; //Variable pour définir la gravité
+
+      var inversion_gravity = 0; //Variable pour définir la gravité du joueur dans la zone anti-gravité (3)
+
+      var spawn1x; //Variable pour définir les coordoonées du spawn (coordonnées x)
+      var spawn1y; //Variable pour définir les coordoonées du spawn (coordonnées y)
+
+      var spawn2x; //Variable pour définir les coordoonées du spawnpoint 1 (coordonnées x)
+      var spawn2y; //Variable pour définir les coordoonées du spawnpoint 1 (coordonnées y)
+
+      var spawn3x; //Variable pour définir les coordoonées du spawnpoint 2 (coordonnées x)
+      var spawn3y; //Variable pour définir les coordoonées du spawnpoint 2 (coordonnées y)
+
+      var spawn4x; //Variable pour définir les coordoonées du spawnpoint 3 (coordonnées x)
+      var spawn4y; //Variable pour définir les coordoonées du spawnpoint 3 (coordonnées y)
+
+      var spawnjoueurx; //Variable définissant le spawnx du joueur pendant sa progression
+      var spawnjoueury; //Variable définissant le spawny du joueur pendant sa progression
+
+      var checkpoint0 = true; //Variable définissant si le joueur a passé le checkpoint 0 (ici le spawn donc true)
+      var checkpoint1 = false; //Variable définissant si le joueur a passé le checkpoint 1 (false au début de la partie car il ne l'a pas encore passé)
+      var checkpoint2 = false; //Variable définissant si le joueur a passé le checkpoint 2 (false au début de la partie car il ne l'a pas encore passé)
+      var checkpoint3 = false; //Variable définissant si le joueur a passé le checkpoint 3 (false au début de la partie car il ne l'a pas encore passé)
+
+      var groupeEnemyFlying; //Groupe d'ennemis volants
+    </script>
+  </body>
+</html>

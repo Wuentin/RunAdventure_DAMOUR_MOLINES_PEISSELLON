@@ -1,0 +1,18 @@
+//////////////////RUNADVENTURE//////////////////
+
+Périphérique nécessaires : un clavier;
+Touches du cavier :
+S : Tirer;
+SPACE : Sauter;
+M : Mode sans son;
+L : Ractivation du son;
+P : Pause;
+ENTER : Select;
+Flèches directionnelles: Déplacement;
+
+Lien du jeu : https://7x3h8.csb.app/
+A ouvrir dans un navigateur.
+
+Bon jeu !
+
+////////////////////////////////////////////////
